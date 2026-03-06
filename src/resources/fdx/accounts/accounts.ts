@@ -953,7 +953,7 @@ export namespace AccountListTransactionsResponse {
       /**
        * The status of the transaction. This will always be PENDING or POSTED.
        */
-      status: 'AUTHORIZATION' | 'MEMO' | 'PENDING' | 'PENDING_APPROVAL' | 'POSTED';
+      status: 'AUTHORIZATION' | 'MEMO' | 'PENDING' | 'PENDING_APPROVAL' | 'POSTED' | 'IN_REVIEW';
 
       /**
        * Long-term persistent identity of the transaction.
@@ -1038,7 +1038,7 @@ export namespace AccountListTransactionsResponse {
       /**
        * The status of the transaction. This will always be PENDING or POSTED.
        */
-      status: 'AUTHORIZATION' | 'MEMO' | 'PENDING' | 'POSTED';
+      status: 'AUTHORIZATION' | 'MEMO' | 'PENDING' | 'IN_REVIEW' | 'POSTED';
 
       /**
        * Long-term persistent identity of the transaction.
@@ -1125,7 +1125,7 @@ export namespace AccountListTransactionsResponse {
       /**
        * The status of the transaction. This will always be PENDING or POSTED.
        */
-      status: 'AUTHORIZATION' | 'MEMO' | 'PENDING' | 'PENDING_APPROVAL' | 'POSTED';
+      status: 'AUTHORIZATION' | 'MEMO' | 'PENDING' | 'PENDING_APPROVAL' | 'IN_REVIEW' | 'POSTED';
 
       /**
        * Long-term persistent identity of the transaction.
@@ -1178,7 +1178,7 @@ export namespace AccountListTransactionsResponse {
        */
       subCategory?: string;
 
-      transactionType?: 'ADJUSTMENT' | 'CHECK' | 'FEE' | 'INTEREST' | 'PAYMENT' | 'WITHDRAWAL' | 'PURCHASE';
+      transactionType?: 'ADJUSTMENT' | 'CHECK' | 'FEE' | 'INTEREST' | 'PAYMENT' | 'WITHDRAWAL';
     }
   }
 

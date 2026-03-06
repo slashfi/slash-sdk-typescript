@@ -56,7 +56,17 @@ export namespace LegalEntityListResponse {
      * Will be empty in rare cases where the legal entity has not yet been fully
      * created.
      */
-    structure?: 'person' | 'llc' | 'lp' | 'llp' | 'gp' | 'partnership' | 'ccorp' | 'scorp';
+    structure?:
+      | 'person'
+      | 'llc'
+      | 'lp'
+      | 'llp'
+      | 'gp'
+      | 'partnership'
+      | 'cooperative'
+      | 'ccorp'
+      | 'scorp'
+      | 'other';
   }
 }
 

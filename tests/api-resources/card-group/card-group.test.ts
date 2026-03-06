@@ -95,7 +95,12 @@ describe('resource cardGroup', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.cardGroup.list(
-        { cursor: 'cursor', 'filter:name': 'filter:name' },
+        {
+          cursor: 'cursor',
+          'filter:name': 'filter:name',
+          'filter:status': 'active',
+          'filter:virtualAccountId': 'filter:virtualAccountId',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(SlashSDK.NotFoundError);

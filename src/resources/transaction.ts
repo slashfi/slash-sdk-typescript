@@ -64,7 +64,7 @@ export interface Transaction {
   /**
    * The account ID associated with the transaction
    */
-  accountId: string;
+  accountId: unknown;
 
   /**
    * For charge cards, specifies if the transaction belongs to the cash or credit
@@ -113,6 +113,7 @@ export interface Transaction {
   detailedStatus:
     | 'pending'
     | 'pending_approval'
+    | 'in_review'
     | 'canceled'
     | 'failed'
     | 'settled'
@@ -134,6 +135,18 @@ export interface Transaction {
   status: 'pending' | 'posted' | 'failed';
 
   /**
+   * Information about the associated ACH transfer if the transaction is an ACH
+   * transfer.
+   */
+  achInfo?: Transaction.ACHInfo;
+
+  /**
+   * The reason for the approval. Only exists for card transactions with
+   * `detailedStatus` = `pending` or `settled`.
+   */
+  approvalReason?: string;
+
+  /**
    * The UTC timestamp of when the transaction was authorized. Only exists for card
    * transactions.
    */
@@ -146,13 +159,25 @@ export interface Transaction {
   cardId?: string;
 
   /**
+   * Information populated if this transaction is a crypto on/off-ramp transaction.
+   */
+  cryptoInfo?: Transaction.CryptoInfo;
+
+  /**
    * The reason for the decline. Only exists for card transactions with
    * `detailedStatus` = `declined`.
    */
   declineReason?: string;
 
   /**
-   * The memo associated with the transaction for wires and achs
+   * Information populated if this transaction is a fee assessed by Slash.
+   */
+  feeInfo?: Transaction.FeeInfo;
+
+  /**
+   * The memo associated with the transaction. For virtual account transfers, this is
+   * the memo provided when creating the transfer. For ACH transactions, this is the
+   * company entry description. For wire transactions, this is the sender reference.
    */
   memo?: string;
 
@@ -183,12 +208,118 @@ export interface Transaction {
   originalCurrency?: Transaction.OriginalCurrency;
 
   /**
+   * The provider authorization ID for the transaction. Only exists for card
+   * transactions.
+   */
+  providerAuthorizationId?: string;
+
+  /**
    * The reference number provided by Visa for this transaction.
    */
   referenceNumber?: string;
+
+  /**
+   * Information about the associated Real-Time Payment (RTP) transfer if the
+   * transaction is a real-time transfer.
+   */
+  rtpInfo?: Transaction.RtpInfo;
+
+  /**
+   * The virtual account ID where the transaction occurred
+   */
+  virtualAccountId?: string;
+
+  /**
+   * Information about the associated wire transfer if the transaction is a wire
+   * transfer.
+   */
+  wireInfo?: Transaction.WireInfo;
 }
 
 export namespace Transaction {
+  /**
+   * Information about the associated ACH transfer if the transaction is an ACH
+   * transfer.
+   */
+  export interface ACHInfo {
+    /**
+     * Optional data field that can be used by the originating company for internal
+     * purposes
+     */
+    companyDiscretionaryData: string;
+
+    /**
+     * The company identification number assigned by the originating depository
+     * financial institution
+     */
+    companyId: string;
+
+    /**
+     * A three-character code that identifies the type of ACH entry (e.g., PPD for
+     * Prearranged Payment and Deposit, CCD for Corporate Credit or Debit)
+     */
+    entryClassCode: string;
+
+    /**
+     * Additional information related to the payment, such as invoice numbers, payment
+     * references, or other payment-specific details
+     */
+    paymentRelatedInfo: string;
+
+    /**
+     * The unique identifier for the receiver of the ACH transfer
+     */
+    receiverId: string;
+
+    /**
+     * A unique number assigned by the originating depository financial institution to
+     * identify the ACH entry
+     */
+    traceNumber: string;
+
+    /**
+     * An optional description of the purpose of the ACH entry as provided by the
+     * originating company
+     */
+    companyEntryDescription?: string;
+
+    /**
+     * The name of the bank or financial institution of the counterparty in the ACH
+     * transfer
+     */
+    counterpartyBank?: string;
+  }
+
+  /**
+   * Information populated if this transaction is a crypto on/off-ramp transaction.
+   */
+  export interface CryptoInfo {
+    /**
+     * The sender address of the crypto on/off-ramp transaction.
+     */
+    senderAddress?: string;
+
+    /**
+     * The transaction hash of the crypto on/off-ramp transaction.
+     */
+    txHash?: string;
+  }
+
+  /**
+   * Information populated if this transaction is a fee assessed by Slash.
+   */
+  export interface FeeInfo {
+    relatedTransaction?: FeeInfo.RelatedTransaction;
+  }
+
+  export namespace FeeInfo {
+    export interface RelatedTransaction {
+      id: string;
+
+      amount: number;
+    }
+  }
+
   /**
    * For card transactions, contains description of the transaction as reported by
    * the merchant, merchant category code, and location of the merchant or origin of
@@ -259,6 +390,87 @@ export namespace Transaction {
      * the transaction.
      */
     conversionRate: number;
+  }
+
+  /**
+   * Information about the associated Real-Time Payment (RTP) transfer if the
+   * transaction is a real-time transfer.
+   */
+  export interface RtpInfo {
+    /**
+     * The name of the bank or financial institution of the counterparty in the
+     * real-time transfer
+     */
+    counterpartyBank?: string;
+
+    /**
+     * Additional description or purpose of the real-time payment
+     */
+    description?: string;
+
+    /**
+     * A unique end-to-end identifier for the real-time payment transaction that
+     * remains with the payment throughout its lifecycle
+     */
+    endToEndId?: string;
+
+    /**
+     * The name of the originator of the real-time payment
+     */
+    originatorName?: string;
+
+    /**
+     * The routing number of the counterparty's bank
+     */
+    routingNumber?: string;
+  }
+
+  /**
+   * Information about the associated wire transfer if the transaction is a wire
+   * transfer.
+   */
+  export interface WireInfo {
+    /**
+     * A code that identifies the business function or purpose of the wire transfer
+     * (e.g., customer transfer, bank transfer, etc.)
+     */
+    businessFunctionCode: string;
+
+    /**
+     * Incoming Message Authentication Data - a unique identifier assigned by the
+     * receiving bank for the incoming wire transfer. If the other bank is an account
+     * with Column N.A., this field is empty.
+     */
+    imad: string;
+
+    /**
+     * Outgoing Message Authentication Data - a unique identifier assigned by the
+     * originating bank for the outgoing wire transfer. If the other bank is an account
+     * with Column N.A., this field is empty.
+     */
+    omad: string;
+
+    /**
+     * A reference number or identifier provided by the sender of the wire transfer for
+     * tracking purposes
+     */
+    senderReference: string;
+
+    /**
+     * A code that identifies the specific type or subtype of the wire transfer
+     */
+    subtypeCode: string;
+
+    /**
+     * A code that identifies the type of wire transfer (e.g., domestic, international)
+     */
+    typeCode: string;
+
+    /**
+     * The name of the bank or financial institution of the counterparty in the wire
+     * transfer
+     */
+    counterpartyBank?: string;
   }
 }
 
@@ -373,6 +585,11 @@ export interface TransactionListParams {
    * legal entity.
    */
   'filter:legalEntityId'?: string;
+
+  /**
+   * Filter transactions by provider authorization ID
+   */
+  'filter:providerAuthorizationId'?: string;
 
   /**
    * Filter transactions by status

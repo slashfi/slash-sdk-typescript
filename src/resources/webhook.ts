@@ -15,7 +15,24 @@ export class WebhookResource extends APIResource {
   }
 
   /**
-   * Update a webhook endpoint
+   * Update a webhook endpoint status.
+   *
+   * **Status transitions:**
+   *
+   * - `active`: Re-enables the endpoint. Use this to:
+   *   - Unpause a paused endpoint
+   *   - Re-enable an endpoint that is backing-off or disabled due to delivery
+   *     failures
+   *   - When re-enabled, any queued notifications will be sent
+   * - `paused`: Pauses the endpoint. While paused:
+   *   - New notifications are queued (not lost)
+   *   - No delivery attempts are made
+   *   - Use `active` to resume and process queued notifications
+   * - `archived`: Permanently archives the endpoint (soft delete)
+   *
+   * **Note:** The `backing-off` and `disabled` statuses are system-managed and
+   * cannot be set directly. These occur automatically when delivery failures are
+   * detected. Use `active` to re-enable.
    */
   update(webhookID: string, body: WebhookUpdateParams, options?: RequestOptions): APIPromise<Webhook> {
     return this._client.patch(path`/webhook/${webhookID}`, { body, ...options });
@@ -43,11 +60,43 @@ export interface Webhook {
   name: string;
 
   /**
+   * The current status of the webhook endpoint:
+   *
+   * - `active`: The webhook is enabled and receiving events normally.
+   * - `paused`: The webhook has been paused by the user. Events are queued and will
+   *   be delivered when the endpoint is set back to `active`.
+   * - `backing-off`: The system is temporarily backing off due to delivery failures.
+   *   Delivery will be automatically retried at `backingOffUntil`. You can also
+   *   immediately re-enable by setting status to `active` via the PATCH endpoint.
+   * - `disabled`: The webhook has been automatically disabled due to repeated
+   *   delivery failures. Re-enable by setting status to `active` via the PATCH
+   *   endpoint.
+   */
+  status: 'active' | 'paused' | 'backing-off' | 'disabled';
+
+  /**
    * The URL that will receive the webhook payload
    */
   url: string;
 
   archivedAt?: string;
+
+  /**
+   * When the system will automatically retry delivery (ISO 8601 timestamp). Only
+   * present when status is `backing-off`.
+   */
+  backingOffUntil?: string;
+
+  /**
+   * When the endpoint was automatically disabled due to repeated failures (ISO 8601
+   * timestamp). Only present when status is `disabled`.
+   */
+  disabledAt?: string;
+
+  /**
+   * When the endpoint was paused by the user (ISO 8601 timestamp)
+   */
+  pausedAt?: string;
 }
 
 export interface WebhookListResponse {
@@ -76,8 +125,18 @@ export interface WebhookCreateParams {
 }
 
 export interface WebhookUpdateParams {
-  status: 'archived';
+  /**
+   * The desired status for the endpoint:
+   *
+   * - `active`: Enable/re-enable the endpoint
+   * - `paused`: Pause the endpoint (notifications are queued)
+   * - `archived`: Archive the endpoint (soft delete)
+   */
+  status: 'active' | 'paused' | 'archived';
 
+  /**
+   * Optional reason for the status change (for audit purposes)
+   */
   reason?: string;
 }
 

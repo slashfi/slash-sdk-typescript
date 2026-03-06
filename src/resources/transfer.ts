@@ -52,6 +52,12 @@ export interface TransferCreateVirtualAccountTransferParams {
    * Header param: Unique key to ensure idempotency of the transfer.
    */
   'X-Idempotency-Key': string;
+
+  /**
+   * Body param: Optional memo/description for the transfer to help differentiate
+   * transactions.
+   */
+  memo?: string;
 }
 
 export declare namespace Transfer {

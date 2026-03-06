@@ -107,6 +107,11 @@ export interface Card {
   cardGroupId?: string;
 
   /**
+   * The name of the card group the card belongs to.
+   */
+  cardGroupName?: string;
+
+  /**
    * The ID of the card product this card was created with.
    */
   cardProductId?: string;

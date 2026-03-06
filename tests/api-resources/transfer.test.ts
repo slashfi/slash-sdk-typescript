@@ -32,6 +32,7 @@ describe('resource transfer', () => {
       destination: 'destination',
       source: 'source',
       'X-Idempotency-Key': 'X-Idempotency-Key',
+      memo: 'memo',
     });
   });
 });
