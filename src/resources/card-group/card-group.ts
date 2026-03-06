@@ -118,6 +118,17 @@ export interface CardGroupListParams {
    * Pass in a name to filter for card groups with a matching name.
    */
   'filter:name'?: string;
+
+  /**
+   * Filter card groups by status. Defaults to 'active' if not provided.
+   */
+  'filter:status'?: 'active' | 'archived';
+
+  /**
+   * Pass in a virtual account ID to filter for card groups under a specific virtual
+   * account.
+   */
+  'filter:virtualAccountId'?: string;
 }
 
 CardGroupResource.SpendingConstraint = SpendingConstraint;

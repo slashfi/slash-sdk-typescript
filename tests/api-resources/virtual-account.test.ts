@@ -92,7 +92,7 @@ describe('resource virtualAccount', () => {
         {
           cursor: 'cursor',
           'filter:accountId': 'filter:accountId',
-          'filter:includeClosedAccounts': 'true',
+          'filter:includeClosedAccounts': undefined,
         },
         { path: '/_stainless_unknown_path' },
       ),

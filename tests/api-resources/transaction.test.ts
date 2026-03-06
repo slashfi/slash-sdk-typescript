@@ -46,6 +46,7 @@ describe('resource transaction', () => {
           'filter:from_authorized_at': 'filter:from_authorized_at',
           'filter:from_date': 'filter:from_date',
           'filter:legalEntityId': 'filter:legalEntityId',
+          'filter:providerAuthorizationId': 'filter:providerAuthorizationId',
           'filter:status': 'pending',
           'filter:to_authorized_at': 'filter:to_authorized_at',
           'filter:to_date': 'filter:to_date',
