@@ -51,7 +51,11 @@ export {
 } from './merchant';
 export { Oauth2, type Oauth2GetTokenResponse, type Oauth2GetTokenParams } from './oauth2/oauth2';
 export { Pay, type SlashHandle, type PaySendResponse, type PaySendParams } from './pay';
-export { SlashHandle, type SlashHandleListResponse, type SlashHandleListParams } from './slash-handle';
+export {
+  SlashHandle as SlashHandleResource,
+  type SlashHandleListResponse,
+  type SlashHandleListParams,
+} from './slash-handle';
 export {
   TransactionResource,
   type Transaction,

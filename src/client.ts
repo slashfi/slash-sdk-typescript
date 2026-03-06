@@ -897,7 +897,7 @@ export class SlashSDK {
   card: API.CardResource = new API.CardResource(this);
   cardGroup: API.CardGroupResource = new API.CardGroupResource(this);
   cardProduct: API.CardProduct = new API.CardProduct(this);
-  slashHandle: API.SlashHandle = new API.SlashHandle(this);
+  slashHandle: API.SlashHandleResource = new API.SlashHandleResource(this);
   pay: API.Pay = new API.Pay(this);
   webhook: API.WebhookResource = new API.WebhookResource(this);
   merchant: API.MerchantResource = new API.MerchantResource(this);
@@ -918,7 +918,7 @@ SlashSDK.Transfer = Transfer;
 SlashSDK.CardResource = CardResource;
 SlashSDK.CardGroupResource = CardGroupResource;
 SlashSDK.CardProduct = CardProduct;
-SlashSDK.SlashHandle = SlashHandleAPISlashHandle;
+SlashSDK.SlashHandleResource = SlashHandleAPISlashHandle;
 SlashSDK.Pay = Pay;
 SlashSDK.WebhookResource = WebhookResource;
 SlashSDK.MerchantResource = MerchantResource;
@@ -1008,7 +1008,7 @@ export declare namespace SlashSDK {
   };
 
   export {
-    SlashHandleAPISlashHandle as SlashHandle,
+    SlashHandleAPISlashHandle as SlashHandleResource,
     type SlashHandleListResponse as SlashHandleListResponse,
     type SlashHandleListParams as SlashHandleListParams,
   };
