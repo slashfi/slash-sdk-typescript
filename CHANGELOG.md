@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2026-03-06)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/slashfi/slash-sdk-typescript/compare/v0.1.0...v0.1.1)
+
+### Bug Fixes
+
+* resolve TypeScript build errors preventing npm publish ([7bc2926](https://github.com/slashfi/slash-sdk-typescript/commit/7bc29266c6b9d80e31ccb0460d228b888bfceb4e))
+* update test for filter:includeClosedAccounts type change ([e5cb026](https://github.com/slashfi/slash-sdk-typescript/commit/e5cb026b15c10554b6e3495db683b291215fac93))
+
 ## 0.1.0 (2026-03-06)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/slashfi/slash-sdk-typescript/compare/v0.0.1...v0.1.0)
