@@ -31,7 +31,7 @@ describe('resource webhook', () => {
 
   // Mock server tests are disabled
   test.skip('update: only required params', async () => {
-    const responsePromise = client.webhook.update('webhookId', { status: 'archived' });
+    const responsePromise = client.webhook.update('webhookId', { status: 'active' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -43,7 +43,7 @@ describe('resource webhook', () => {
 
   // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
-    const response = await client.webhook.update('webhookId', { status: 'archived', reason: 'reason' });
+    const response = await client.webhook.update('webhookId', { status: 'active', reason: 'reason' });
   });
 
   // Mock server tests are disabled

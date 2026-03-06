@@ -291,7 +291,7 @@ export interface VirtualAccountListParams {
    * Include virtual accounts that have been closed in the query results. By default,
    * they will not be returned.
    */
-  'filter:includeClosedAccounts'?: 'true' | 'false';
+  'filter:includeClosedAccounts'?;
 }
 
 export declare namespace VirtualAccountResource {
