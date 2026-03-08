@@ -132,6 +132,12 @@ export interface Card {
   isSingleUse?: boolean;
 
   /**
+   * The modifiers applied to this card. Modifiers control card behavior like
+   * restricting to recurring payments only.
+   */
+  modifiers?: Array<Card.Modifier>;
+
+  /**
    * This field contains the full PAN which will only be sent on a request for a
    * single card when you set the query param "include_pan" to "true"
    */
@@ -153,6 +159,18 @@ export interface Card {
    * The virtual account that this card is associated with
    */
   virtualAccountId?: string;
+}
+
+export namespace Card {
+  export interface Modifier {
+    name: 'only_allow_recurring_payments';
+
+    /**
+     * Whether to only allow recurring payments. The default value for newly created
+     * cards is false.
+     */
+    value: boolean;
+  }
 }
 
 export interface CardGroupUtilization {
@@ -291,6 +309,13 @@ export interface CardListParams {
    * entity.
    */
   'filter:legalEntityId'?: string;
+
+  /**
+   * Filter cards by modifier. Format is "modifier_name:value" (e.g.,
+   * "only_allow_recurring_payments:true"). Returns cards where the specified
+   * modifier has the given value.
+   */
+  'filter:modifier'?: string;
 
   /**
    * Returns all cards matching the status passed in.
