@@ -119,6 +119,7 @@ describe('resource card', () => {
           'filter:cardGroupId': 'filter:cardGroupId',
           'filter:cardGroupName': 'filter:cardGroupName',
           'filter:legalEntityId': 'filter:legalEntityId',
+          'filter:modifier': 'filter:modifier',
           'filter:status': 'active',
           'filter:virtualAccountId': 'filter:virtualAccountId',
           sort: 'createdAt',

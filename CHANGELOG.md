@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.0 (2026-03-10)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/slashfi/slash-sdk-typescript/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* **api:** api update ([532a077](https://github.com/slashfi/slash-sdk-typescript/commit/532a077fbe99daa4bc1ba2070d20e99422a0054b))
+
+
+### Bug Fixes
+
+* **client:** preserve URL params already embedded in path ([78610eb](https://github.com/slashfi/slash-sdk-typescript/commit/78610ebe36bc759490936814428b0b6ab3f2d9cf))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([8a4530b](https://github.com/slashfi/slash-sdk-typescript/commit/8a4530bc0f78338f2ddda031edc4f1190d4d92f2))
+* **internal:** update dependencies to address dependabot vulnerabilities ([8e8948f](https://github.com/slashfi/slash-sdk-typescript/commit/8e8948f2dc93018dce5827b0a48aba2b6bcecad9))
+
 ## 0.1.1 (2026-03-06)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/slashfi/slash-sdk-typescript/compare/v0.1.0...v0.1.1)
