@@ -135,25 +135,7 @@ Methods:
 
 # SlashHandle
 
-Types:
-
-- <code><a href="./src/resources/slash-handle.ts">SlashHandleListResponse</a></code>
-
-Methods:
-
-- <code title="get /slash-handle">client.slashHandle.<a href="./src/resources/slash-handle.ts">list</a>({ ...params }) -> SlashHandleListResponse</code>
-
 # Pay
-
-Types:
-
-- <code><a href="./src/resources/pay.ts">SlashHandle</a></code>
-- <code><a href="./src/resources/pay.ts">PaySendResponse</a></code>
-
-Methods:
-
-- <code title="get /pay">client.pay.<a href="./src/resources/pay.ts">retrieve</a>() -> SlashHandle</code>
-- <code title="post /pay">client.pay.<a href="./src/resources/pay.ts">send</a>({ ...params }) -> PaySendResponse</code>
 
 # Webhook
 

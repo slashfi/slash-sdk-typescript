@@ -1,4 +1,4 @@
-configured_endpoints: 55
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/slash-financial--inc-dash%2Fslash-sdk-17929cf020855a06e89cd77f79318e3e3e80226efae7e9926b32449f27d38b27.yml
-openapi_spec_hash: e4b68fcae6d0ef6fba49eaf6762e50c0
+configured_endpoints: 52
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/slash-financial--inc-dash%2Fslash-sdk-5f96f1193e2d0809bc7cdf7b04368f1d3acca07405784cc46087a01daf4c362f.yml
+openapi_spec_hash: 6929a4ff6ab1460410822068a7975f9d
 config_hash: 9a5c338a583a0bc1a2e798ec5b94d860

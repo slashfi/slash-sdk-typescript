@@ -41,12 +41,8 @@ import {
   MerchantCategoryListParams,
   MerchantCategoryListResponse,
 } from './resources/merchant-category';
-import { Pay, PaySendParams, PaySendResponse, SlashHandle } from './resources/pay';
-import {
-  SlashHandle as SlashHandleAPISlashHandle,
-  SlashHandleListParams,
-  SlashHandleListResponse,
-} from './resources/slash-handle';
+import { Pay } from './resources/pay';
+import { SlashHandle } from './resources/slash-handle';
 import {
   Transaction,
   TransactionAggregateParams,
@@ -919,7 +915,7 @@ SlashSDK.Transfer = Transfer;
 SlashSDK.CardResource = CardResource;
 SlashSDK.CardGroupResource = CardGroupResource;
 SlashSDK.CardProduct = CardProduct;
-SlashSDK.SlashHandle = SlashHandleAPISlashHandle;
+SlashSDK.SlashHandle = SlashHandle;
 SlashSDK.Pay = Pay;
 SlashSDK.WebhookResource = WebhookResource;
 SlashSDK.MerchantResource = MerchantResource;
@@ -1008,18 +1004,9 @@ export declare namespace SlashSDK {
     type CardProductListParams as CardProductListParams,
   };
 
-  export {
-    SlashHandleAPISlashHandle as SlashHandle,
-    type SlashHandleListResponse as SlashHandleListResponse,
-    type SlashHandleListParams as SlashHandleListParams,
-  };
+  export { SlashHandle as SlashHandle };
 
-  export {
-    Pay as Pay,
-    type SlashHandle as SlashHandle,
-    type PaySendResponse as PaySendResponse,
-    type PaySendParams as PaySendParams,
-  };
+  export { Pay as Pay };
 
   export {
     WebhookResource as WebhookResource,
