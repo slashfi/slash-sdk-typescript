@@ -549,6 +549,12 @@ export interface TransactionListParams {
   'filter:accountId'?: string;
 
   /**
+   * Filter transactions by card group ID. This will return all card transactions
+   * that belong to cards in the specified card group.
+   */
+  'filter:cardGroupId'?: string;
+
+  /**
    * Filter transactions by cardId
    */
   'filter:cardId'?: string;

@@ -41,6 +41,7 @@ describe('resource transaction', () => {
           accountId: 'accountId',
           cursor: 'cursor',
           'filter:accountId': 'filter:accountId',
+          'filter:cardGroupId': 'filter:cardGroupId',
           'filter:cardId': 'filter:cardId',
           'filter:category': 'card',
           'filter:detailed_status': 'pending',
