@@ -554,6 +554,11 @@ export interface TransactionListParams {
   'filter:cardId'?: string;
 
   /**
+   * Filter transactions by category type
+   */
+  'filter:category'?: 'card' | 'ach' | 'wire' | 'international_wire' | 'rtp' | 'fee' | 'internal';
+
+  /**
    * Filter transactions by detailed status
    */
   'filter:detailed_status'?:
@@ -632,6 +637,11 @@ export interface TransactionAggregateParams {
    * Filter transactions by cardId
    */
   'filter:cardId'?: string;
+
+  /**
+   * Filter transactions by category type
+   */
+  'filter:category'?: 'card' | 'ach' | 'wire' | 'international_wire' | 'rtp' | 'fee' | 'internal';
 
   /**
    * Filter transactions by detailed status
