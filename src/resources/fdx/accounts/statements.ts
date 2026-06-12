@@ -69,7 +69,7 @@ export namespace StatementListResponse {
      */
     statementId: string;
 
-    status: 'pending' | 'available';
+    status: 'AVAILABLE' | 'PROCESSING' | 'FAILED';
   }
 
   export namespace Statement {
