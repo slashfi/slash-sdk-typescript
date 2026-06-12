@@ -586,7 +586,7 @@ export namespace AccountRetrieveResponse {
         currentUnitPrice?: number;
 
         /**
-         * The date and time the current unit price was last updated.
+         * The date (YYYY-MM-DD) the current unit price was last updated.
          */
         currentUnitPriceDate?: string;
 
