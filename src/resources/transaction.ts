@@ -175,6 +175,12 @@ export interface Transaction {
   feeInfo?: Transaction.FeeInfo;
 
   /**
+   * Information about the associated Faster Payments transfer if the transaction is
+   * a Faster Payments deposit into a Global USD account.
+   */
+  fpsInfo?: Transaction.FpsInfo;
+
+  /**
    * The memo associated with the transaction. For virtual account transfers, this is
    * the memo provided when creating the transfer. For ACH transactions, this is the
    * company entry description. For wire transactions, this is the sender reference.
@@ -208,6 +214,12 @@ export interface Transaction {
   originalCurrency?: Transaction.OriginalCurrency;
 
   /**
+   * Information about the associated PIX (Brazilian instant-payment) transfer if the
+   * transaction is a PIX deposit into a Global USD account.
+   */
+  pixInfo?: Transaction.PixInfo;
+
+  /**
    * The provider authorization ID for the transaction. Only exists for card
    * transactions.
    */
@@ -223,6 +235,18 @@ export interface Transaction {
    * transaction is a real-time transfer.
    */
   rtpInfo?: Transaction.RtpInfo;
+
+  /**
+   * Information about the associated SEPA (Single Euro Payments Area) transfer if
+   * the transaction is a SEPA deposit into a Global USD account.
+   */
+  sepaInfo?: Transaction.SepaInfo;
+
+  /**
+   * Information about the associated SPEI (Mexican real-time payment) transfer if
+   * the transaction is a SPEI deposit into a Global USD account.
+   */
+  speiInfo?: Transaction.SpeiInfo;
 
   /**
    * The virtual account ID where the transaction occurred
@@ -321,6 +345,50 @@ export namespace Transaction {
   }
 
   /**
+   * Information about the associated Faster Payments transfer if the transaction is
+   * a Faster Payments deposit into a Global USD account.
+   */
+  export interface FpsInfo {
+    /**
+     * The account number of the counterparty on the Faster Payments transfer.
+     */
+    accountNumber?: string;
+
+    /**
+     * The last 4 digits of the account number of the counterparty on the Faster
+     * Payments transfer.
+     */
+    last4?: string;
+
+    /**
+     * The name of the recipient of the Faster Payments transfer.
+     */
+    recipientName?: string;
+
+    /**
+     * The free-form reference field set by the originator on the Faster Payments
+     * transfer.
+     */
+    reference?: string;
+
+    /**
+     * The name of the originator of the Faster Payments transfer.
+     */
+    senderName?: string;
+
+    /**
+     * The sort code of the counterparty bank on the Faster Payments transfer.
+     */
+    sortCode?: string;
+
+    /**
+     * The unique end-to-end transaction reference (UETR) for the Faster Payments
+     * transfer.
+     */
+    uetr?: string;
+  }
+
+  /**
    * For card transactions, contains description of the transaction as reported by
    * the merchant, merchant category code, and location of the merchant or origin of
    * the transaction. For other transactions, this field is undefined.
@@ -393,6 +461,32 @@ export namespace Transaction {
   }
 
   /**
+   * Information about the associated PIX (Brazilian instant-payment) transfer if the
+   * transaction is a PIX deposit into a Global USD account.
+   */
+  export interface PixInfo {
+    /**
+     * A description of the PIX transfer provided by the originator.
+     */
+    description?: string;
+
+    /**
+     * The free-form reference field set by the originator on the PIX transfer.
+     */
+    reference?: string;
+
+    /**
+     * The name of the originator of the PIX transfer.
+     */
+    senderName?: string;
+
+    /**
+     * The PIX network tracking number (`endToEndId`) for the transfer.
+     */
+    trackingNumber?: string;
+  }
+
+  /**
    * Information about the associated Real-Time Payment (RTP) transfer if the
    * transaction is a real-time transfer.
    */
@@ -423,6 +517,84 @@ export namespace Transaction {
      * The routing number of the counterparty's bank
      */
     routingNumber?: string;
+  }
+
+  /**
+   * Information about the associated SEPA (Single Euro Payments Area) transfer if
+   * the transaction is a SEPA deposit into a Global USD account.
+   */
+  export interface SepaInfo {
+    /**
+     * The BIC of the counterparty bank on the SEPA transfer.
+     */
+    bic?: string;
+
+    /**
+     * The full IBAN of the counterparty on the SEPA transfer.
+     */
+    iban?: string;
+
+    /**
+     * The last 4 characters of the IBAN of the counterparty on the SEPA transfer.
+     */
+    ibanLast4?: string;
+
+    /**
+     * The SEPA payment scheme used (e.g., `sepa_credit_transfer`, `sepa_instant`).
+     */
+    paymentScheme?: string;
+
+    /**
+     * The name of the recipient of the SEPA transfer.
+     */
+    recipientName?: string;
+
+    /**
+     * The free-form reference field set by the originator on the SEPA transfer.
+     */
+    reference?: string;
+
+    /**
+     * The name of the originator of the SEPA transfer.
+     */
+    senderName?: string;
+
+    /**
+     * The unique end-to-end transaction reference (UETR) for the SEPA transfer.
+     */
+    uetr?: string;
+  }
+
+  /**
+   * Information about the associated SPEI (Mexican real-time payment) transfer if
+   * the transaction is a SPEI deposit into a Global USD account.
+   */
+  export interface SpeiInfo {
+    /**
+     * The CLABE of the counterparty on the SPEI transfer.
+     */
+    clabe?: string;
+
+    /**
+     * A description of the SPEI transfer provided by the originator.
+     */
+    description?: string;
+
+    /**
+     * The free-form reference field (concepto de pago) set by the originator on the
+     * SPEI transfer.
+     */
+    reference?: string;
+
+    /**
+     * The name of the originator of the SPEI transfer.
+     */
+    senderName?: string;
+
+    /**
+     * The SPEI network tracking number (clave de rastreo) for the transfer.
+     */
+    trackingNumber?: string;
   }
 
   /**
