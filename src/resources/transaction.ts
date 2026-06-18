@@ -159,12 +159,6 @@ export interface Transaction {
   cardId?: string;
 
   /**
-   * Cashback earned for this transaction. This is only present when cashback is
-   * known and currently applies to eligible card transactions.
-   */
-  cashbackInfo?: Transaction.CashbackInfo;
-
-  /**
    * Information populated if this transaction is a crypto on/off-ramp transaction.
    */
   cryptoInfo?: Transaction.CryptoInfo;
@@ -185,12 +179,6 @@ export interface Transaction {
    * a Faster Payments deposit into a Global USD account.
    */
   fpsInfo?: Transaction.FpsInfo;
-
-  /**
-   * Foreign exchange fee charged for this transaction. This is only present when an
-   * FX fee has been created for the transaction.
-   */
-  fxFeeInfo?: Transaction.FxFeeInfo;
 
   /**
    * The memo associated with the transaction. For virtual account transfers, this is
@@ -327,22 +315,6 @@ export namespace Transaction {
   }
 
   /**
-   * Cashback earned for this transaction. This is only present when cashback is
-   * known and currently applies to eligible card transactions.
-   */
-  export interface CashbackInfo {
-    /**
-     * The cashback amount earned for this transaction, in cents.
-     */
-    amountCents: number;
-
-    /**
-     * The cashback rate applied to this transaction.
-     */
-    rate: number;
-  }
-
-  /**
    * Information populated if this transaction is a crypto on/off-ramp transaction.
    */
   export interface CryptoInfo {
@@ -414,17 +386,6 @@ export namespace Transaction {
      * transfer.
      */
     uetr?: string;
-  }
-
-  /**
-   * Foreign exchange fee charged for this transaction. This is only present when an
-   * FX fee has been created for the transaction.
-   */
-  export interface FxFeeInfo {
-    /**
-     * The FX fee amount charged for this transaction, in USD cents.
-     */
-    amountCents: number;
   }
 
   /**
