@@ -94,6 +94,11 @@ export interface Webhook {
   disabledAt?: string;
 
   /**
+   * Public webhook event types this endpoint receives. Omitted means all events.
+   */
+  enabledEvents?: Array<string>;
+
+  /**
    * When the endpoint was paused by the user (ISO 8601 timestamp)
    */
   pausedAt?: string;
