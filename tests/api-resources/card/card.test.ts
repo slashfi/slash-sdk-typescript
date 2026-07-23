@@ -27,6 +27,7 @@ describe('resource card', () => {
       type: 'virtual',
       accountId: 'accountId',
       cardGroupId: 'cardGroupId',
+      cardholderId: 'cardholderId',
       cardProductId: 'cardProductId',
       isSingleUse: true,
       spendingConstraint: {

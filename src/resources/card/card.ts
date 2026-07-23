@@ -222,6 +222,12 @@ export interface CardCreateParams {
   cardGroupId?: string;
 
   /**
+   * The ID of the cardholder to assign to the card. You can get cardholder IDs by
+   * calling `GET /cardholder`.
+   */
+  cardholderId?: string;
+
+  /**
    * The ID of the card product to use when creating this card, if not specified a
    * random card product will be chosen.
    */
