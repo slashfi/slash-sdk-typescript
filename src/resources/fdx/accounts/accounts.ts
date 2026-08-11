@@ -1184,9 +1184,11 @@ export namespace AccountListTransactionsResponse {
       referenceTransactionId?: string;
 
       /**
-       * Additional information about the transaction category, if available.
+       * Additional information about the transaction category, if available. For
+       * Treasury (MONEYMARKET) accounts, this is the activity type of the transaction
+       * (OTHER is reserved for future activity types). Omitted for other account types.
        */
-      subCategory?: string;
+      subCategory?: 'INTEREST' | 'DIVIDEND' | 'FEE' | 'TRANSFER' | 'OTHER';
     }
   }
 
