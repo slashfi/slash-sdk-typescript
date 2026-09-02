@@ -46,6 +46,14 @@ describe('resource card', () => {
             startDate: 'startDate',
             timezone: 'timezone',
           },
+          utilizationLimitV2: [
+            {
+              limitAmount: { amountCents: 0 },
+              preset: 'daily',
+              startDate: 'startDate',
+              timezone: 'timezone',
+            },
+          ],
         },
       },
       userData: { foo: 'bar' },
