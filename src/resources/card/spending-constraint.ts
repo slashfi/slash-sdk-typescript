@@ -81,8 +81,6 @@ export namespace PartialSpendingConstraint {
     transactionSizeLimit?: SpendingRule.TransactionSizeLimit;
 
     utilizationLimit?: SpendingRule.UtilizationLimit;
-
-    utilizationLimitV2?: Array<SpendingRule.UtilizationLimitV2>;
   }
 
   export namespace SpendingRule {
@@ -99,35 +97,6 @@ export namespace PartialSpendingConstraint {
     }
 
     export interface UtilizationLimit {
-      /**
-       * Represents a monetary value
-       */
-      limitAmount?: VirtualAccountAPI.Money;
-
-      preset?: 'daily' | 'weekly' | 'monthly' | 'yearly' | 'collective';
-
-      /**
-       * Format ISO-8601. A day that equals today or the past. This is optional.If the
-       * `preset` is "daily", this value is ignored. If the `preset` is "weekly",
-       * "monthly" or "yearly", then the this value is used to compute when the limit
-       * should start limit.
-       */
-      startDate?: string;
-
-      /**
-       * Canonical IANA timezone identifier in `Area/Location` form, for example
-       * `America/New_York`, `Asia/Shanghai` or `Asia/Hong_Kong`. Limits always reset at
-       * midnight in the timezone specified. If no timezone is specified, UTC is used.
-       * Values that are not valid IANA identifiers are rejected with a 400 -- this
-       * includes language-level enum names such as `ASIA_SHANGHAI`, bare UTC offsets
-       * such as `+8`, and abbreviations such as `PST`. Note that some languages return
-       * the enum constant rather than the IANA id by default (for example Java/Kotlin
-       * `ZoneId` `.name()` instead of `.getId()`).
-       */
-      timezone?: string;
-    }
-
-    export interface UtilizationLimitV2 {
       /**
        * Represents a monetary value
        */
@@ -207,8 +176,6 @@ export namespace SpendingConstraint {
     transactionSizeLimit?: SpendingRule.TransactionSizeLimit;
 
     utilizationLimit?: SpendingRule.UtilizationLimit;
-
-    utilizationLimitV2?: Array<SpendingRule.UtilizationLimitV2>;
   }
 
   export namespace SpendingRule {
@@ -225,35 +192,6 @@ export namespace SpendingConstraint {
     }
 
     export interface UtilizationLimit {
-      /**
-       * Represents a monetary value
-       */
-      limitAmount: VirtualAccountAPI.Money;
-
-      preset: 'daily' | 'weekly' | 'monthly' | 'yearly' | 'collective';
-
-      /**
-       * Format ISO-8601. A day that equals today or the past. This is optional.If the
-       * `preset` is "daily", this value is ignored. If the `preset` is "weekly",
-       * "monthly" or "yearly", then the this value is used to compute when the limit
-       * should start limit.
-       */
-      startDate?: string;
-
-      /**
-       * Canonical IANA timezone identifier in `Area/Location` form, for example
-       * `America/New_York`, `Asia/Shanghai` or `Asia/Hong_Kong`. Limits always reset at
-       * midnight in the timezone specified. If no timezone is specified, UTC is used.
-       * Values that are not valid IANA identifiers are rejected with a 400 -- this
-       * includes language-level enum names such as `ASIA_SHANGHAI`, bare UTC offsets
-       * such as `+8`, and abbreviations such as `PST`. Note that some languages return
-       * the enum constant rather than the IANA id by default (for example Java/Kotlin
-       * `ZoneId` `.name()` instead of `.getId()`).
-       */
-      timezone?: string;
-    }
-
-    export interface UtilizationLimitV2 {
       /**
        * Represents a monetary value
        */
@@ -328,8 +266,6 @@ export namespace SpendingConstraintUpdateFullParams {
     transactionSizeLimit?: SpendingRule.TransactionSizeLimit;
 
     utilizationLimit?: SpendingRule.UtilizationLimit;
-
-    utilizationLimitV2?: Array<SpendingRule.UtilizationLimitV2>;
   }
 
   export namespace SpendingRule {
@@ -346,35 +282,6 @@ export namespace SpendingConstraintUpdateFullParams {
     }
 
     export interface UtilizationLimit {
-      /**
-       * Represents a monetary value
-       */
-      limitAmount: VirtualAccountAPI.Money;
-
-      preset: 'daily' | 'weekly' | 'monthly' | 'yearly' | 'collective';
-
-      /**
-       * Format ISO-8601. A day that equals today or the past. This is optional.If the
-       * `preset` is "daily", this value is ignored. If the `preset` is "weekly",
-       * "monthly" or "yearly", then the this value is used to compute when the limit
-       * should start limit.
-       */
-      startDate?: string;
-
-      /**
-       * Canonical IANA timezone identifier in `Area/Location` form, for example
-       * `America/New_York`, `Asia/Shanghai` or `Asia/Hong_Kong`. Limits always reset at
-       * midnight in the timezone specified. If no timezone is specified, UTC is used.
-       * Values that are not valid IANA identifiers are rejected with a 400 -- this
-       * includes language-level enum names such as `ASIA_SHANGHAI`, bare UTC offsets
-       * such as `+8`, and abbreviations such as `PST`. Note that some languages return
-       * the enum constant rather than the IANA id by default (for example Java/Kotlin
-       * `ZoneId` `.name()` instead of `.getId()`).
-       */
-      timezone?: string;
-    }
-
-    export interface UtilizationLimitV2 {
       /**
        * Represents a monetary value
        */
@@ -449,8 +356,6 @@ export namespace SpendingConstraintUpdatePartialParams {
     transactionSizeLimit?: SpendingRule.TransactionSizeLimit;
 
     utilizationLimit?: SpendingRule.UtilizationLimit;
-
-    utilizationLimitV2?: Array<SpendingRule.UtilizationLimitV2>;
   }
 
   export namespace SpendingRule {
@@ -467,35 +372,6 @@ export namespace SpendingConstraintUpdatePartialParams {
     }
 
     export interface UtilizationLimit {
-      /**
-       * Represents a monetary value
-       */
-      limitAmount?: VirtualAccountAPI.Money;
-
-      preset?: 'daily' | 'weekly' | 'monthly' | 'yearly' | 'collective';
-
-      /**
-       * Format ISO-8601. A day that equals today or the past. This is optional.If the
-       * `preset` is "daily", this value is ignored. If the `preset` is "weekly",
-       * "monthly" or "yearly", then the this value is used to compute when the limit
-       * should start limit.
-       */
-      startDate?: string;
-
-      /**
-       * Canonical IANA timezone identifier in `Area/Location` form, for example
-       * `America/New_York`, `Asia/Shanghai` or `Asia/Hong_Kong`. Limits always reset at
-       * midnight in the timezone specified. If no timezone is specified, UTC is used.
-       * Values that are not valid IANA identifiers are rejected with a 400 -- this
-       * includes language-level enum names such as `ASIA_SHANGHAI`, bare UTC offsets
-       * such as `+8`, and abbreviations such as `PST`. Note that some languages return
-       * the enum constant rather than the IANA id by default (for example Java/Kotlin
-       * `ZoneId` `.name()` instead of `.getId()`).
-       */
-      timezone?: string;
-    }
-
-    export interface UtilizationLimitV2 {
       /**
        * Represents a monetary value
        */
